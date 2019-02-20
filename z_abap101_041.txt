@@ -1,0 +1,18 @@
+Write an executable program that performs the following calculation: 2 + 3 * 5
+
+
+
+Solution:
+
+
+
+REPORT	z_abap101_041.
+
+START-OF-SELECTION.
+
+DATA v_result TYPE i.
+
+v_result = 2 + 3 * 5. " 25 or 17?
+
+WRITE v_result.
+

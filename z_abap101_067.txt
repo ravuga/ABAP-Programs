@@ -1,0 +1,41 @@
+Write an executable program with two parameters (a string and a number) The number should be accepted only if it's less or equal to 25. The program should print the string as many times as the value of the numeric parameter. The output should be as following
+
+String = "ABAPers are not crazy people." Number = 21.
+
+Line [1]: A
+Line [2]: AB
+Line [3]: ABA
+Line [4]: ABAP
+Line [5]: ABAPe
+(...)
+Line [21]: ABAPers are not crazy
+
+
+
+Solution:
+
+
+
+REPORT	z_abap101_068.
+
+PARAMETERS p_text TYPE string OBLIGATORY.
+
+PARAMETER p_len TYPE i OBLIGATORY.
+
+AT SELECTION-SCREEN ON p_len.
+
+IF p_len > 25.
+
+MESSAGE 'P_LEN should be less or equal 25' TYPE 'E'.
+
+ENDIF.
+
+START-OF-SELECTION.
+
+DO p_len TIMES.
+
+WRITE: 'Line [', sy-index , ']: ', p_text(sy-index).
+
+NEW-LINE.
+
+ENDDO.
