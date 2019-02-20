@@ -1,0 +1,12 @@
+Declare a variable of type integer with initial value 12.72.
+
+
+
+Solution:
+
+
+REPORT	z_abap101_018.
+
+DATA round_number TYPE i VALUE '12.72'.
+
+WRITE round_number.

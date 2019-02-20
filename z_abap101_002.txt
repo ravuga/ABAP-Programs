@@ -1,0 +1,10 @@
+Declare an integer.
+
+
+
+Solution:
+
+
+REPORT z_abap101_002.
+
+DATA number_of_employees TYPE i.

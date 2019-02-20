@@ -1,0 +1,10 @@
+Declare a type as a number with 7 positions.
+
+
+
+Solution:
+
+
+REPORT z_abap101_003.
+
+TYPES number_of_unpaid_invoices TYPE n LENGTH 7.

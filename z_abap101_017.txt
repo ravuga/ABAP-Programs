@@ -1,0 +1,10 @@
+Declare a variable of type integer with initial value 42.
+
+
+
+Solution:
+
+
+REPORT	z_abap101_017.
+
+DATA age TYPE i VALUE 42.

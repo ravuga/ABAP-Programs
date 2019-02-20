@@ -1,0 +1,14 @@
+Declare all types and constants from type-pools ABAP and ICON.
+
+
+
+Solution:
+
+
+REPORT	z_abap101_037.
+
+TYPE-POOLS: icon, abap.
+
+CONSTANTS c_favorite_icon LIKE icon_information VALUE '@0S@'.
+
+DATA is_true TYPE abap_bool.

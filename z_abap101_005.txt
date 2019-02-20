@@ -1,0 +1,10 @@
+Declare a time type.
+
+
+
+Solution:
+
+
+REPORT z_abap101_005.
+
+TYPES last_changed_at TYPE t.

@@ -1,0 +1,44 @@
+Declare a work area of 5 constant components. All of them should have different primitive
+
+types.
+
+
+
+Solution:
+
+
+REPORT	z_abap101_035.
+
+CONSTANTS: BEGIN OF c_primitives,
+
+char TYPE c LENGTH 4 VALUE 'CHAR',
+
+int TYPE i VALUE 101,
+
+date TYPE d VALUE '20141225',
+
+time TYPE t VALUE '112359',
+
+string TYPE string VALUE ` STRING `,
+  
+
+END OF c_primitives.
+
+Is it possible to declare an internal table of constants?
+
+
+
+Answer:
+
+
+
+No. No initial value can be specified for internal tables and references
+
+
+REPORT	z_abap101_036.
+
+TYPES ty_integer TYPE i.
+
+TYPES ty_integers TYPE TABLE OF ty_integer.
+
+CONSTANTS itab_integers TYPE ty_integers VALUE 1. " Syntax error

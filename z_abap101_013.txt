@@ -1,0 +1,33 @@
+Declare a table type using the structure type created in exercise 8.
+
+
+
+Solution:
+
+
+REPORT	Z_ABAP101_013.
+
+* 2nd Option - Reusing TYPES keyword
+
+TYPES: BEGIN OF some_components_sflight_2,
+
+carrid	TYPE sflight-carrid,
+
+connid	TYPE sflight-connid,
+
+fldate	TYPE sflight-fldate,
+
+price	TYPE sflight-price,
+
+currency	TYPE sflight-currency,
+
+planetype TYPE sflight-planetype,
+
+seatsmax	TYPE sflight-seatsmax,
+
+seatsocc	TYPE sflight-seatsocc,
+
+END OF some_components_sflight_2.
+
+TYPES table_type_short_sflight TYPE TABLE OF some_components_sflight_2 WITH KEY carrid connid fldate.
+

@@ -1,0 +1,11 @@
+Declare a variable of numeric type with 4 positions and initial value 1234.
+
+
+
+Solution:
+
+
+
+REPORT	Z_ABAP101_016.
+
+DATA amount TYPE f VALUE 1234.

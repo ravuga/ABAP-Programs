@@ -1,0 +1,25 @@
+Declare a structure type with the following components of the global structure SBOOK:
+
+CARRID, CONNID, FLDATE, BOOKID, CUSTOMID.
+
+
+
+Solution:
+
+
+REPORT	z_abap101_009.
+
+TYPES: BEGIN OF flight_booking,
+
+carrid	TYPE sbook-carrid	,
+
+connid	TYPE sbook-connid	,
+
+fldate	TYPE sbook-fldate	,
+
+bookid	TYPE sbook-bookid	,
+
+customid TYPE sbook-customid ,
+
+END OF flight_booking.
+

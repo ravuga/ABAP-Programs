@@ -1,0 +1,12 @@
+Declare a constant which type is the same of another constant.
+
+
+
+Solution:
+
+
+REPORT	z_abap101_038.
+
+CONSTANTS c_a TYPE c VALUE 'A'.
+
+CONSTANTS c_z LIKE c_a VALUE 'Z'.

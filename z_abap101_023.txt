@@ -1,0 +1,10 @@
+Declare a variable of the same type of field FLDATE table SFLIGHT.
+
+
+
+Solution:
+
+
+REPORT	z_abap101_023.
+
+DATA flight_date TYPE sflight-fldate.

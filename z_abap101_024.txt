@@ -1,0 +1,11 @@
+
+Declare a structure of the same type of SBOOK.
+
+
+
+Solution:
+
+
+REPORT	z_abap101_024.
+
+DATA single_booking TYPE sbook.

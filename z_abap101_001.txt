@@ -1,0 +1,12 @@
+Declare a TYPE as a character with 10 positions.
+
+
+
+Solution:
+
+
+
+REPORT z_abap101_001.
+
+
+TYPES customer_name TYPE c LENGTH 10.

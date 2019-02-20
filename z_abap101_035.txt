@@ -1,0 +1,18 @@
+Declare a work area of constants. All components must be integers.
+
+
+
+Solution:
+
+
+REPORT	z_abap101_034.
+
+CONSTANTS: BEGIN OF c_integers,
+
+first TYPE i VALUE 1,
+
+second TYPE i VALUE 2,
+
+third TYPE i VALUE 3,
+
+END OF c_integers.

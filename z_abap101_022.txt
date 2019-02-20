@@ -1,0 +1,10 @@
+Declare a variable of the same type of field carrid from table SPFLI.
+
+
+
+Solution:
+
+
+REPORT	Z_ABAP101_022.
+
+DATA air_line_code TYPE spfli-carrid.

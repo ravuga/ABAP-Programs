@@ -1,0 +1,19 @@
+Declare a type using the global structure SFLIGHT.
+
+
+
+Solution:
+
+
+REPORT z_abap101_007.
+
+TYPES same_type_of_sflight TYPE SFLIGHT.
+
+
+Notes:
+
+Double click on SFLIGHT
+
+It's a global definition (it's inside the repository)
+
+This is a TYPE, not a variable.

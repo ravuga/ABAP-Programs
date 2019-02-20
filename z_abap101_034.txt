@@ -1,0 +1,10 @@
+Declare a constants which contains the 5 first decimals of Pi.
+
+
+
+Solution:
+
+
+REPORT	z_abap101_033.
+
+CONSTANTS c_pi TYPE p LENGTH 7 DECIMALS 5 VALUE '3.14159'.

@@ -1,0 +1,12 @@
+Declare a variable of type character with 10 positions and give it ‘Hello ABAP’ as an initial
+
+value.
+
+
+
+Solution:
+
+
+REPORT	Z_ABAP101_015.
+
+DATA message TYPE c LENGTH 10 VALUE 'Hello ABAP'.s

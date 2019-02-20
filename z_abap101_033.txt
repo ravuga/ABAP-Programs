@@ -1,0 +1,16 @@
+Declare two constants which contain the values 'X' (true) and ' ' (false).
+
+Note: This is a common practice as ABAP does not contain a boolean primitive type.
+
+
+
+Solution:
+
+
+REPORT	z_abap101_032.
+
+TYPES ty_boolean TYPE c. " what is the length?
+
+CONSTANTS c_true TYPE ty_boolean VALUE 'X'.
+
+CONSTANTS c_false TYPE ty_boolean VALUE space.

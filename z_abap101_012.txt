@@ -1,0 +1,36 @@
+Declare a table type with all components of the global structure SFLIGHT.
+
+
+
+Solution:
+
+
+REPORT	Z_ABAP101_012.
+
+TYPES table_type_sflight TYPE TABLE OF sflight.
+
+DATA sflight_work_area TYPE LINE OF table_type_sflight.
+
+DATA table_sflight TYPE table_type_sflight.
+
+START-OF-SELECTION.
+
+sflight_work_area-CARRID = 'AA'.
+
+sflight_work_area-CONNID = '0017'.
+
+sflight_work_area-FLDATE = 20131225. "Christmas
+
+sflight_work_area-PRICE = '500.12'.
+
+APPEND sflight_work_area TO table_sflight.
+
+sflight_work_area-CARRID = 'AA'.
+
+sflight_work_area-CONNID = '064'.
+
+sflight_work_area-FLDATE = 20131225.
+
+sflight_work_area-PRICE = '500.12'.
+
+APPEND sflight_work_area TO table_sflight.
