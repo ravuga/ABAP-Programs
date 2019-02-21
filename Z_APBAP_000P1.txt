@@ -1,0 +1,32 @@
+*&---------------------------------------------------------------------*
+*& Report ZPROGRAM_1
+*&---------------------------------------------------------------------*
+*& TAKING PARAMETERS FOR CALL BY VALUE, CALL BY REFERENCE AND CALL BY RESULT
+*&---------------------------------------------------------------------*
+REPORT ZPROGRAM_1.
+DATA: x TYPE i, y TYPE i.
+
+x = 20. y = 30.
+
+PERFORM add.
+WRITE: 'AFTER FUNCTION CALL Y = ',y.SKIP.
+PERFORM add1 USING x y.
+WRITE: 'AFTER FUNCTION CALL Y = ',y.SKIP.
+PERFORM add2 USING  y  .
+WRITE: 'AFTER FUNCTION CALL Y = ',y.SKIP.
+
+FORM add.
+
+ADD x TO y.
+WRITE: 'Y = ', y.SKIP.
+  ENDFORM.
+  FORM add1 USING x TYPE i y TYPE i.
+
+ADD x TO y.
+WRITE: 'Y = ', y.SKIP.
+    ENDFORM.
+
+    FORM add2 USING VALUE(y).
+      ADD x TO y.
+      WRITE: 'Y = ', y.SKIP.
+      ENDFORM.

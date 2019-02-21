@@ -1,0 +1,32 @@
+*&---------------------------------------------------------------------*
+*& Report ZPROGRAM_5
+*&---------------------------------------------------------------------*
+*& ME-> WORKS AS THIS KEYWORD.
+*&---------------------------------------------------------------------*
+REPORT ZPROGRAM_5.
+" STATIC METHOD PROGRAM
+" THIS PROGRAM MAKES A STATIC METHOD OF DATE_DISPLAYER.
+
+DATA SY_TIME TYPE SY-UZEIT.
+
+CLASS TIME_PRINT DEFINITION.
+  PUBLIC SECTION.
+    DATA DISPLAY_MESSAGE TYPE CHAR40 VALUE 'THIS IS A TEXT MESSAGE'.
+
+    CLASS-DATA: DATE_DISPLAY TYPE SY-DATUM.
+    CLASS-METHODS: DATE_DISPLAYER.
+ ENDCLASS.
+
+ CLASS TIME_PRINT IMPLEMENTATION.
+    METHOD DATE_DISPLAYER.
+      SY_TIME = SY-UZEIT.
+      DATE_DISPLAY = SY-DATUM.
+      WRITE: / 'DATE IS ', DATE_DISPLAY,
+             / 'TIME IS ', SY_TIME.
+      ENDMETHOD.
+ ENDCLASS.
+
+
+ START-OF-SELECTION.
+    CALL METHOD TIME_PRINT=>DATE_DISPLAYER.
+ END-OF-SELECTION.

@@ -1,0 +1,44 @@
+*&---------------------------------------------------------------------*
+*& Report ZPROGRAM_4
+*&---------------------------------------------------------------------*
+*&	 " THIS PROGRAM TALKS ABOUT STATIC VARIABLES VS OBJECT
+*&---------------------------------------------------------------------*
+REPORT ZPROGRAM_4.
+
+CLASS CCLASS DEFINITION.
+  PUBLIC SECTION.
+      METHODS : METHOD1, METHOD2 IMPORTING VALUE(DATA) TYPE I VALUE(NAME) TYPE CHAR45, CONSTRUCTOR .
+      CLASS-DATA: CNAME Type CHAR45, CDATA Type I.
+      DATA: NAME TYPE CHAR45, DATA TYPE I.
+ENDCLASS.
+
+CLASS CCLASS IMPLEMENTATION.
+  METHOD METHOD1.
+    DO 4 TIMES.
+      CDATA = 1 + CDATA.
+      WRITE: / CDATA , CNAME.
+    ENDDO.
+SKIP.
+  ENDMETHOD.
+  METHOD METHOD2.
+    DO 4 TIMES.
+      DATA = 1 + DATA.
+      WRITE: / DATA , NAME.
+    ENDDO.
+SKIP.
+  ENDMETHOD.
+  METHOD CONSTRUCTOR.
+    WRITE: / ' HELLO SIR '.
+    ENDMETHOD.
+
+
+ENDCLASS.
+
+
+START-OF-SELECTION.
+  CCLASS=>CNAME = 'THIS IS A TEXT'.
+  CCLASS=>CDATA = 9.
+  Data: Object1 TYPE REF TO CCLASS, Object2 TYPE REF TO CCLASS.
+CREATE OBJECT: Object1, Object2.
+CALL METHOD: Object1->METHOD1, Object2->METHOD2 EXPORTING DATA = 5 NAME = 'HELLO'.
+END-OF-SELECTION.

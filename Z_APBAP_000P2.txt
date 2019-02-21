@@ -1,0 +1,44 @@
+*&---------------------------------------------------------------------*
+*& Report ZPROGRAM_2
+*&---------------------------------------------------------------------*
+*& PROGRAM ON VALUE INCREMENT
+*&---------------------------------------------------------------------*
+REPORT zprogram_2.
+DATA: result TYPE i.
+
+CLASS num_count DEFINITION.
+  PUBLIC SECTION.
+      METHODS:  set_num IMPORTING VALUE(set_value) TYPE i,
+                increment_num,
+                get_num EXPORTING VALUE(get_value) TYPE i  RETURNING VALUE(get_value1) TYPE i.
+
+  PRIVATE SECTION.
+    DATA num TYPE i.
+ENDCLASS.
+
+  CLASS num_count IMPLEMENTATION.
+  METHOD set_num.
+       num = set_value.
+        ENDMETHOD.
+
+  METHOD increment_num.
+       ADD 1 TO num.
+        ENDMETHOD.
+
+  METHOD get_num.
+      get_value = num. get_value1 = num.
+    ENDMETHOD.
+  ENDCLASS.
+
+
+START-OF-SELECTION.
+DATA: objectx TYPE REF TO num_count.
+CREATE OBJECT: objectx.
+CALL METHOD: objectx->set_num  EXPORTING  set_value = 10.
+CALL METHOD: objectx->increment_num.
+
+" call method: Objectx->get_num importing get_value = result.
+
+result = objectx->get_num( ).
+WRITE : result.
+END-OF-SELECTION.

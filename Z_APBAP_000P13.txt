@@ -1,0 +1,58 @@
+*&---------------------------------------------------------------------*
+*& Report ZPROGRAM_13
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT ZPROGRAM_13.
+INTERFACE my_interface1.
+Methods msg.
+ENDINTERFACE.
+
+CLASS num_counter Definition.
+PUBLIC Section.
+INTERFACES my_interface1.
+Methods add_number.
+PRIVATE Section.
+Data num Type I.
+ENDCLASS.
+
+CLASS num_counter Implementation.
+Method my_interface1~msg.
+Write: / 'The number is', num.
+EndMethod.
+
+Method add_number.
+ADD 7 TO num.
+EndMethod.
+ENDCLASS.
+
+CLASS drive1 Definition.
+PUBLIC Section.
+INTERFACES my_interface1.
+Methods speed1.
+PRIVATE Section.
+Data wheel1 Type I.
+ENDCLASS.
+
+CLASS drive1 Implementation.
+Method my_interface1~msg.
+Write: / 'Total number of wheels is', wheel1.
+EndMethod.
+
+Method speed1.
+Add 4 To wheel1.
+EndMethod.
+ENDCLASS.
+
+Start-Of-Selection.
+Data object1 Type Ref To num_counter.
+Create Object object1.
+
+CALL Method object1->add_number.
+CALL Method object1->my_interface1~msg.
+
+Data object2 Type Ref To drive1.
+Create Object object2.
+
+CALL Method object2->speed1.
+CALL Method object2->my_interface1~msg.
