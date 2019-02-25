@@ -1,0 +1,41 @@
+*&---------------------------------------------------------------------*
+*& Report ZPROGRAM_15
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT ZPROGRAM_15.
+CLASS CL_main DEFINITION.
+PUBLIC SECTION.
+DATA: num1 TYPE I.
+METHODS: PRO IMPORTING num2 TYPE I.
+EVENTS: CUTOFF.
+ENDCLASS.
+
+CLASS CL_eventhandler DEFINITION.
+PUBLIC SECTION.
+METHODS: handling_CUTOFF FOR EVENT CUTOFF OF CL_main.
+ENDCLASS.
+
+START-OF-SELECTION.
+DATA: main1 TYPE REF TO CL_main.
+DATA: eventhandler1 TYPE REF TO CL_eventhandler.
+
+CREATE OBJECT main1.
+CREATE OBJECT eventhandler1.
+
+SET HANDLER eventhandler1->handling_CUTOFF FOR main1.
+main1->PRO( 4 ).
+CLASS CL_main IMPLEMENTATION.
+METHOD PRO.
+num1 = num2.
+IF num2 >= 2.
+RAISE EVENT CUTOFF.
+ENDIF.
+ENDMETHOD.
+ENDCLASS.
+
+CLASS CL_eventhandler IMPLEMENTATION.
+METHOD handling_CUTOFF.
+WRITE: 'Handling the CutOff'.
+WRITE: / 'Event has been processed'.
+ENDMETHOD. ENDCLASS.
