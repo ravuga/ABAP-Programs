@@ -1,0 +1,51 @@
+*&---------------------------------------------------------------------*
+*& Report ZPROGRAM_16	
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT zprogram_16.
+CLASS cl_vehicle DEFINITION.
+PUBLIC SECTION.
+DATA: speed TYPE i.
+METHODS: speedometer IMPORTING curr_speed TYPE i.
+EVENTS: maxspeed.
+ENDCLASS.
+
+CLASS cl_eventhandler DEFINITION.
+PUBLIC SECTION.
+METHODS: maxspeed_event FOR EVENT maxspeed OF cl_vehicle.
+ENDCLASS.
+
+CLASS cl_vehicle IMPLEMENTATION.
+METHOD speedometer.
+speed = curr_speed.
+IF speed > 250.
+  RAISE EVENT maxspeed.
+ELSEIF speed > 150.
+  WRITE: / 'ARE YOU ON HIGHWAY ? BE CARFUL'.
+ELSEIF speed > 50.
+  WRITE: / 'GOOD SPEED FOR ROADS.'.
+ELSE.
+  WRITE: / 'ENTER VALID SPEED.'.
+ENDIF.
+
+ENDMETHOD.
+
+ENDCLASS.
+
+
+CLASS cl_eventhandler IMPLEMENTATION.
+METHOD maxspeed_event.
+WRITE: / 'Cannot go Beyond that Speed'.
+ENDMETHOD.
+ENDCLASS.
+
+START-OF-SELECTION.
+DATA: car1 TYPE REF TO cl_vehicle.
+DATA: eventhandler1 TYPE REF TO cl_eventhandler.
+
+CREATE OBJECT car1.
+CREATE OBJECT eventhandler1.
+
+SET HANDLER eventhandler1->maxspeed_event FOR ALL INSTANCES.
+CAll METHOD: car1->speedometer EXPORTING curr_speed = 350.
