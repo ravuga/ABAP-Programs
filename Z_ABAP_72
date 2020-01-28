@@ -1,0 +1,21 @@
+** Constructor Program **
+Report ZConstructor1. 
+CLASS class1 Definition.
+ PUBLIC Section.
+ Methods: method1, constructor.
+ ENDCLASS.
+ CLASS class1 Implementation. 
+Method method1. 
+Write: / 'This is Method1'.
+ EndMethod.
+ Method constructor.
+ Write: / 'Constructor Triggered'.
+ EndMethod. 
+ENDCLASS. 
+
+
+
+
+Start-Of-Selection.
+ Data Object1 Type Ref To class1.
+ Create Object Object1.
