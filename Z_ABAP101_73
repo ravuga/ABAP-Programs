@@ -1,0 +1,79 @@
+ABAP OOP UpCasting And DownCasting
+REPORT zcl_test.
+CLASS a1 DEFINITION.
+PUBLIC SECTION.
+DATA: num1 TYPE i VALUE 100.
+METHODS:m1.
+ENDCLASS.
+
+CLASS a1 IMPLEMENTATION.
+METHOD m1.
+WRITE: 'a1:',num1.
+ENDMETHOD.
+ENDCLASS.
+
+CLASS b1 DEFINITION INHERITING FROM a1.
+PUBLIC SECTION.
+METHODS:m2, m1 REDEFINITION.
+ENDCLASS.
+
+CLASS b1 IMPLEMENTATION.
+METHOD m1.
+num1 = num1 .
+WRITE: 'b1:',num1.
+ENDMETHOD.
+
+METHOD m2.
+WRITE: 'M2 in class b1'.
+ENDMETHOD.
+ENDCLASS.
+
+START-OF-SELECTION.
+
+DATA: a TYPE REF TO a1.
+DATA: b TYPE REF TO b1.
+data: c type REF TO c1.
+
+
+****************************************************************
+CREATE OBJECT b.
+a = b. "upcasting
+CALL METHOD a->m1( ).
+*call METHOD a->m2( ). " we can't access the own sub class methods using super class ref.
+NEW-LINE.
+
+b ?= a. " down casting
+CALL METHOD b->m1( ).
+NEW-LINE.
+CALL METHOD b->m2( ).
+
+*****************************************************************
+" error null ref
+*create OBJECT a.
+*b ?= a. "down casting still its giving dump
+*call METHOD b->m1( ).
+
+*****************************************************************
+*
+*CREATE OBJECT a.
+*TRY.
+* b ?= a. "u r attempted to use a 'NULL' object reference dump
+*CATCH cx_sy_move_cast_error.
+* CALL METHOD b->m1( ).
+*ENDTRY.
+
+*****************************************************************
+
+*CREATE OBJECT a.
+*CREATE OBJECT b.
+*TRY.
+* b ?= a.
+*CATCH cx_sy_move_cast_error.
+* CALL METHOD b->m1( ).
+* call METHOD b->m2( ).
+*ENDTRY.
+
+*****************************************************************
+" creating a object for sub class eg: 'b' and assigining sub class object
+" towards super class reference eg: 'c'
+
